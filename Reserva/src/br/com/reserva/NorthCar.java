@@ -9,6 +9,9 @@ public class NorthCar extends Locadora{
 		super.setClienteRegular(new Cliente(630.0, 600.0));
 		super.setClienteFidelidade(new Cliente(580.0,590.0));
 		
+		//Definição da capacidade de passageiros
+		super.setCapacidadeCarros(7);
+		
 		//Adicionando 2 carros
 				ArrayList<Carro> carros = new ArrayList<>();
 				Carro c1 = new Suv();
