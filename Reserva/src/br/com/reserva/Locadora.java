@@ -8,6 +8,21 @@ public abstract class Locadora {
 	private Cliente clienteFidelidade;
 	private ArrayList<Carro> carros;
 	private int capacidadeCarros;
+	private String nome;
+	
+	//Exibe a as opções para o cliente
+	public void listagemCarros(double valorReserva) {
+		System.out.println("A melhor opção está na locadora "+this.getNome());
+		System.out.println("Carros disponíveis:");
+		ArrayList<Carro> carros = this.getCarros();
+		for (int i = 0; i < carros.size(); i++) {
+			System.out.println("* " +carros.get(i).getModelo());
+		}
+		//formata o valor da reserva
+		String resultado = String.format("%.2f", valorReserva);
+		System.out.println("Valor total da reserva: R$"+ resultado);
+		
+	}
 
 	
 	//Calcula o valor total do período de locação 
@@ -28,6 +43,14 @@ public abstract class Locadora {
 		return totalFds + totalSemana;
 	}
 	
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
 	public Cliente getClienteRegular() {
 		return clienteRegular;
 	}
@@ -49,7 +72,7 @@ public abstract class Locadora {
 	}
 
 	public ArrayList<Carro> getCarros() {
-		return carros;
+		return this.carros;
 	}
 	public void setCarros(ArrayList<Carro> carros) {
 		this.carros = carros;
