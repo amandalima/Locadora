@@ -1,5 +1,6 @@
 package br.com.reserva;
 
+import java.util.Scanner;
 
 public class Reserva {
 
@@ -7,10 +8,15 @@ public class Reserva {
 		
 		//Obtém as entradas do usuário
 		EntradaDados in = new EntradaDados();
-		in.entradas();
-	
+		Scanner scan = new Scanner(System.in);
+		//entradas de data
+		in.datas(scan);
 		
-
+		//calcula o carro mais barato
+		in.maisBarato();
+		
 	}
+	
+
 
 }

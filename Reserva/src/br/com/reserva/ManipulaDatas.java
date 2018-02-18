@@ -4,21 +4,29 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Scanner;
 
 public class ManipulaDatas {
+	private Scanner scan;
+	
+	public ManipulaDatas(Scanner scan) {
+		this.scan = scan;
+	}
+	public ManipulaDatas() {
+		
+	}
+	
 	
 	//transforma uma string em uma data do tipo calendar
-	public Calendar transformaStringData(String data) {
+	public Calendar transformaStringData(String data, Scanner scan) {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Calendar cal = Calendar.getInstance();
 		try {
 			cal.setTime(sdf.parse(data));
 		} catch (ParseException e) {
-			System.out.println("Informe as datas no padrão dd/mm/aaaa separadas por vírgula");
-			System.out.println();
-			EntradaDados in = new EntradaDados();
-			in.datas();
-			
+			System.out.println("As datas devem estar no padrão dd/mm/aaaa separadas por vírgula");
+			EntradaDados en = new EntradaDados();
+			en.datas(scan);
 		}
 		return cal;
 	}

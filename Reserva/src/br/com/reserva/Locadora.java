@@ -12,7 +12,7 @@ public abstract class Locadora {
 	
 	//Exibe a as opções para o cliente
 	public void listagemCarros(double valorReserva) {
-		System.out.println("A melhor opção está na locadora "+this.getNome());
+		System.out.println("Locadora "+this.getNome());
 		System.out.println("Carros disponíveis:");
 		ArrayList<Carro> carros = this.getCarros();
 		for (int i = 0; i < carros.size(); i++) {
