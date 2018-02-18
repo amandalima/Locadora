@@ -9,7 +9,6 @@ public class EntradaDados {
 	private int passageiros;
 	private ArrayList<Calendar> datas;
 
-
 	// Entrada para passageiros
 	public void passageiros(Scanner scan) {
 		System.out.println("Quantos passageiros?");
@@ -41,7 +40,7 @@ public class EntradaDados {
 			passageiros.reset();
 			this.passageiros(passageiros);
 		}
-		if(num <1) {
+		if (num < 1) {
 			System.out.println("O número de passageiros precisa ser maior que zero");
 			passageiros.reset();
 			this.passageiros(passageiros);
@@ -55,7 +54,7 @@ public class EntradaDados {
 	}
 
 	public void setDatas(Scanner scan) {
-		
+
 		String datas = scan.nextLine();
 
 		if (datas.isEmpty()) {
@@ -112,24 +111,23 @@ public class EntradaDados {
 			locadoras.add(westCar);
 		}
 
-		//define quais locadoras tem o melhor valor
-		double valorMelhor=0.0;
+		// define quais locadoras tem o melhor valor
+		double valorMelhor = 0.0;
 		for (int i = 0; i < locadoras.size(); i++) {
 			Locadora atual = locadoras.get(i);
 			double valorAtual = atual.totalClienteRegular(semana, fds);
-			if(valorMelhor==0.0) {
-				valorMelhor=valorAtual;
+			if (valorMelhor == 0.0) {
+				valorMelhor = valorAtual;
 			}
-			if(valorAtual > valorMelhor) {
+			if (valorAtual > valorMelhor) {
 				locadoras.remove(i);
 			}
 		}
-		//Exibe saída para o usuário
+		// Exibe saída para o usuário
 		System.out.println("Melhores opções: ");
 		for (int i = 0; i < locadoras.size(); i++) {
 			locadoras.get(i).listagemCarros(valorMelhor);
 		}
-		
 
 	}
 

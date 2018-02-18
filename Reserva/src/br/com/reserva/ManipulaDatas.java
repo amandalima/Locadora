@@ -8,16 +8,16 @@ import java.util.Scanner;
 
 public class ManipulaDatas {
 	private Scanner scan;
-	
+
 	public ManipulaDatas(Scanner scan) {
 		this.scan = scan;
 	}
+
 	public ManipulaDatas() {
-		
+
 	}
-	
-	
-	//transforma uma string em uma data do tipo calendar
+
+	// transforma uma string em uma data do tipo calendar
 	public Calendar transformaStringData(String data, Scanner scan) {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Calendar cal = Calendar.getInstance();
@@ -30,17 +30,16 @@ public class ManipulaDatas {
 		}
 		return cal;
 	}
-	
-	//Converte datas do tipo calendar para um array de dias da semana
+
+	// Converte datas do tipo calendar para um array de dias da semana
 	public int[] converteDiasSemana(ArrayList<Calendar> datas) {
 		int[] diasSemana = new int[datas.size()];
 		for (int i = 0; i < datas.size(); i++) {
 			Calendar date = datas.get(i);
-			diasSemana[i]=date.get(Calendar.DAY_OF_WEEK);
+			diasSemana[i] = date.get(Calendar.DAY_OF_WEEK);
 		}
-		
+
 		return diasSemana;
 	}
-	
 
 }

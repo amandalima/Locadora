@@ -20,6 +20,5 @@ public class Carro {
 	public void setOcupantes(int ocupantes) {
 		this.ocupantes = ocupantes;
 	}
-	
-	
+
 }

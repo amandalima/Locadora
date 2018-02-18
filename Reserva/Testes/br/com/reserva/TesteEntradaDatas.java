@@ -1,6 +1,5 @@
 package br.com.reserva;
 
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
@@ -21,9 +20,9 @@ class TesteEntradaDatas {
 			Scanner scan = new Scanner(entradas.get(i));
 			e.datas(scan);
 		}
-		
+
 	}
-	
+
 	@Test
 	void deveAceitarSomenteStringFormatoData() {
 		EntradaDados e = new EntradaDados();
@@ -37,7 +36,7 @@ class TesteEntradaDatas {
 			e.datas(scan);
 		}
 	}
-	
+
 	@Test
 	void deveSetarDatasCorretamente() {
 		EntradaDados e = new EntradaDados();

@@ -12,9 +12,9 @@ import org.junit.jupiter.api.Test;
 class TestaEntradaPassageiros {
 
 	@Test
-	
+
 	void deveSetarCorretamentePassageiros() {
-	
+
 		EntradaDados e = new EntradaDados();
 		Scanner scan = new Scanner("1");
 		e.passageiros(scan);
