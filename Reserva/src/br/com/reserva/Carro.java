@@ -1,6 +1,6 @@
 package br.com.reserva;
 
-public abstract class Carro {
+public class Carro {
 
 	private int ocupantes;
 	private String modelo;
