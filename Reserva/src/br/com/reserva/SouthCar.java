@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class SouthCar extends Locadora {
 
 	public SouthCar() {
+		super.setNome("SouthCar");
 		// Definição das taxas de cada tipo de cliente
 		super.setClienteRegular(new Cliente(210.0, 200.0));
 		super.setClienteFidelidade(new Cliente(150.0, 90.0));
@@ -20,6 +21,7 @@ public class SouthCar extends Locadora {
 		Carro c2 = new Compacto();
 		c2.setModelo("Ka");
 		carros.add(c2);
+		super.setCarros(carros);
 	}
 
 }
