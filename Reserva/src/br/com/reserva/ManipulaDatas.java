@@ -2,6 +2,7 @@ package br.com.reserva;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class ManipulaDatas {
@@ -20,6 +21,17 @@ public class ManipulaDatas {
 			
 		}
 		return cal;
+	}
+	
+	//Converte datas do tipo calendar para um array de dias da semana
+	public int[] converteDiasSemana(ArrayList<Calendar> datas) {
+		int[] diasSemana = new int[datas.size()];
+		for (int i = 0; i < datas.size(); i++) {
+			Calendar date = datas.get(i);
+			diasSemana[i]=date.get(Calendar.DAY_OF_WEEK);
+		}
+		
+		return diasSemana;
 	}
 	
 
