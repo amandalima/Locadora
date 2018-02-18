@@ -1,6 +1,7 @@
 package br.com.reserva;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Scanner;
 
@@ -8,72 +9,67 @@ public class EntradaDados {
 
 	private int passageiros;
 	private ArrayList<Calendar> datas;
+	private String[] splitDatas;
 
-	// Entrada para passageiros
-	public void passageiros(Scanner scan) {
-		System.out.println("Quantos passageiros?");
-		this.setPassageiros(scan);
-	}
+	public void entradas(Scanner scan) {
+		System.out.println("Infome a entrada no formato <passageiros>:<dd/mm/yyyy>,<dd/mm/yyy>....");
+		String entrada = scan.nextLine();
+		try {
+			String[] split = entrada.split(":");
+			if(split.length != 2) {
+				throw new Exception();
+			}
+			int numpassageiros = Integer.parseInt(split[0]);
+			this.passageiros=numpassageiros;
+			String[] splitDatas = split[1].split(",");
+			if(splitDatas.length <1) {
+				System.out.println("A segunda parte da entrada deve ser a lista das datas separadas por vírgula");
+				System.out.println("Exemplo de entrada: 3:22/01/2018,23/01/2018");
+				throw new Exception();
+			}
+			this.splitDatas=splitDatas;
+		} catch (Exception e) {
+		}
+		
+		// esperamos que a primeira entrada seja um inteiro maior que zero e menor que 8
+		try {
+			if (passageiros > 8 || passageiros < 1) {
+				System.out.println("O número de passageiros deve estar entre 1 e 7."+
+				" Não temos carros que comportam mais de 7 passageiros");
+				throw new Exception();
+			}
+			this.setPassageiros(passageiros);
+		} catch (Exception e) {
+			System.out.println("A primeira parte da entrada deve ser o número de passageiros.");
+			System.out.println("Exemplo de entrada: 3:22/01/2018,23/01/2018");
+			this.entradas(scan);
+		}
+		// esperamos que a segunda parte da entrada sejam as datas
+		try {
+			
+			ArrayList<Calendar> dates = new ArrayList<>();
+			for (int i = 0; i < this.splitDatas.length; i++) {
+				ManipulaDatas md = new ManipulaDatas();
+				dates.add(md.transformaStringData(splitDatas[i], scan));
+			}
+			this.datas = dates;
+		} catch (Exception e) {
+			System.out.println("A segunda parte da entrada deve ser a lista das datas separadas por vírgula");
+			System.out.println("Exemplo de entrada: 3:22/01/2018,23/01/2018");
+		}
 
-	// Entrada para datas
-	public void datas(Scanner scan) {
-		System.out.println("Informe as datas que deseja alugar o carro separadas por espaços");
-		// Lê, valida e formata a entrada do teclado referente às datas
-		this.setDatas(scan);
 	}
 
 	public int getPassageiros() {
 		return passageiros;
 	}
 
-	public void setPassageiros(Scanner passageiros) {
-
-		// lê a entrada do teclado até encontrar um inteiro
-
-		while (!passageiros.hasNextInt()) {
-			System.out.println("Informe um número de passageiros");
-			passageiros.next();
-		}
-		int num = passageiros.nextInt();
-		if (num > 7) {
-			System.out.println("Nenhum carro cabe mais de 7 passageiros!");
-			passageiros.reset();
-			this.passageiros(passageiros);
-		}
-		if (num < 1) {
-			System.out.println("O número de passageiros precisa ser maior que zero");
-			passageiros.reset();
-			this.passageiros(passageiros);
-		}
-		passageiros.close(); // closing scanner
-		this.passageiros = num;
+	public void setPassageiros(int passageiros) {
+		this.passageiros = passageiros;
 	}
 
 	public ArrayList<Calendar> getDatas() {
 		return datas;
-	}
-
-	public void setDatas(Scanner scan) {
-
-		String datas = scan.nextLine();
-
-		if (datas.isEmpty()) {
-			this.datas(scan);
-		}
-		try {
-			String[] split = datas.split(" ");
-			// percorre o array de string e transforma cada uma em data armazenando em um
-			// arraylist
-			ArrayList<Calendar> dates = new ArrayList<>();
-			for (int i = 0; i < split.length; i++) {
-				ManipulaDatas md = new ManipulaDatas();
-				dates.add(md.transformaStringData(split[i], scan));
-			}
-			this.datas = dates;
-
-		} catch (Exception e) {
-			System.out.println("Informe as datas no padrão dd/mm/aaaa separadas por vírgula");
-		}
 	}
 
 	// Procura o carro mais barato

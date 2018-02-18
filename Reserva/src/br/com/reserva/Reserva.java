@@ -9,11 +9,9 @@ public class Reserva {
 		// Obtém as entradas do usuário
 		EntradaDados in = new EntradaDados();
 		Scanner scan = new Scanner(System.in);
-		// entradas de data
-		in.datas(scan);
 		
-		//Entradas de passageiro
-		in.passageiros(scan);
+		
+		in.entradas(scan);
 
 		// calcula o carro mais barato
 		in.maisBarato();

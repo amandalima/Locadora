@@ -26,7 +26,8 @@ public class ManipulaDatas {
 		} catch (ParseException e) {
 			System.out.println("As datas devem estar no padrão dd/mm/aaaa separadas por vírgula");
 			EntradaDados en = new EntradaDados();
-			en.datas(scan);
+			scan.reset();
+			en.entradas(scan);
 		}
 		return cal;
 	}
